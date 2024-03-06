@@ -1,0 +1,34 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Layout from "@/layouts/Layout.astro";
+import formatDate from "@/utils/formatDate";
+
+export async function getStaticPaths() {
+  const certifications = await getCollection("certifications");
+
+  return certifications.map((certifications) => ({
+    params: { slug: certifications.slug },
+    props: { certifications },
+  }));
+}
+
+type Props = {
+  certifications: CollectionEntry<"certifications">;
+};
+
+const { certifications } = Astro.props;
+const { Content } = await certifications.render();
+---
+
+<Layout title={certifications.data.title} description={certifications.data.description}>
+  <main class="post mx-auto flex w-full max-w-prose flex-col gap-4">
+    <header role="presentation">
+      <h1 class="text-md">
+        {certifications.data.title} - {formatDate(certifications.data.publishedAt)}
+      </h1>
+      <p class="italic">{certifications.data.description}</p>
+    </header>
+
+    <Content />
+  </main>
+</Layout>

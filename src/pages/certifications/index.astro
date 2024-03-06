@@ -14,16 +14,16 @@ const certifications = (await getCollection("certifications")).sort(function (fi
 
     <article class="flex flex-col gap-4">
       {
-        certifications.map((post) => (
+        certifications.map((certifications) => (
           <a
             class="group flex flex-col gap-2 border-t border-neutral-700 py-4 transition-all hover:text-neutral-100"
-            href={`/certifications/${post.slug}`}
+            href={`/certifications/${certifications.slug}`}
           >
             <div class="flex w-full items-center justify-between">
-              <h2 class="text-lg">{post.data.title}</h2>
+              <h2 class="text-lg">{certifications.data.title}</h2>
 
               <div class="flex flex-row items-center gap-4">
-                <p>{formatDate(post.data.publishedAt)}</p>
+                <p>{formatDate(certifications.data.publishedAt)}</p>
                 <svg
                   width="18"
                   height="18"
@@ -46,7 +46,7 @@ const certifications = (await getCollection("certifications")).sort(function (fi
                 </svg>
               </div>
             </div>
-            <p>{post.data.description}</p>
+            <p>{certifications.data.description}</p>
           </a>
         ))
       }
