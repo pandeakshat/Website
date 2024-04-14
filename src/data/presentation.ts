@@ -42,6 +42,14 @@ const presentation: Presentation = {
       label: "Newsletter",
       link: "https://exp-er.beehiiv.com",
     },
+    {
+      label: "Odyssey",
+      link: "https://odyssey.pandeakshat.com",
+    },
+    {
+      label: "Dashboard",
+      link: "https://dashboard.pandeakshat.com",
+    },
 
   ],
 };
